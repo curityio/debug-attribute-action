@@ -19,11 +19,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.curity.identityserver.plugins</groupId>
-    <artifactId>identityserver.plugins.authenticationactions.debug.attribute</artifactId>
+    <groupId>io.curity.identityserver.plugin</groupId>
+    <artifactId>identityserver.plugins.authenticationactions.debug</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
-    <name>Debug Attribute Authentication Action</name>
+    <name>Debug Authentication Action</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -82,6 +82,7 @@
             <groupId>se.curity.identityserver</groupId>
             <artifactId>identityserver.sdk</artifactId>
             <version>${project.curityVersion}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -91,21 +92,17 @@
         </dependency>
     </dependencies>
 
-    <repositories>
+    <distributionManagement>
         <repository>
-            <id>customer-release-repo</id>
-            <url>https://nexus.curity.se/nexus/content/repositories/customer-release-repo</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
+            <id>curity-release-repo</id>
+            <name>Curity Nexus Release Repository</name>
+            <url>https://nexus.curity.se/nexus/content/repositories/customer-release-repo/</url>
         </repository>
-        <repository>
-            <id>customer-snapshot-repo</id>
-            <name>Customer Snapshot Repository</name>
+        <snapshotRepository>
+            <id>curity-snapshot-repo</id>
+            <name>Curity Nexus Snapshot Repository</name>
             <url>https://nexus.curity.se/nexus/content/repositories/customer-snapshot-repo/</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </repository>
-    </repositories>
+        </snapshotRepository>
+    </distributionManagement>
+
 </project>
