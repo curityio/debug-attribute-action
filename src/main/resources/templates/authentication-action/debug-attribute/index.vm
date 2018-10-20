@@ -1,0 +1,41 @@
+#*
+ * Copyright (C) 2018 Curity AB. All rights reserved.
+ *
+ * The contents of this file are the property of Curity AB.
+ * You may not copy or use this file, in either source code
+ * or executable form, except in compliance with terms
+ * set by Curity AB.
+ *
+ * For further information, please contact Curity AB.
+ *#
+
+## The title of this page can be overridden by setting the $title variable here to a resource string or the actual value
+##set($title = "")
+
+#set ($show_symbol = false)
+
+#define ($_body)
+
+<form method="post" action="$_actionUrl">
+
+    <h1>Subject: $!_subject</h1>
+
+    <h4>Subject Attributes</h4>
+    <pre>
+        #foreach($key in $_attributes.subject.keySet())
+            $key : $_attributes.subject.get($key)
+        #end
+    </pre>
+    <h4>Context Attributes</h4>
+    <pre>
+        #foreach($key in $_attributes.context.keySet())
+            $key : $_attributes.context.get($key)
+        #end
+    </pre>
+
+    <button type="submit" class="button button-fullwidth $!button_color mt2">Continue</button>
+
+</form>
+#end
+
+#parse("layouts/default")
