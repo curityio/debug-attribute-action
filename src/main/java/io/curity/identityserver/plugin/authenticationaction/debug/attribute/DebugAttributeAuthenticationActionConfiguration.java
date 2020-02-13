@@ -12,9 +12,13 @@
 package io.curity.identityserver.plugin.authenticationaction.debug.attribute;
 
 import se.curity.identityserver.sdk.config.Configuration;
+import se.curity.identityserver.sdk.service.Json;
 import se.curity.identityserver.sdk.service.SessionManager;
 
 public interface DebugAttributeAuthenticationActionConfiguration extends Configuration
 {
     SessionManager getSessionManager();
+
+    Json getJson();
+
 }

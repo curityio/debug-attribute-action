@@ -20,17 +20,20 @@
 
     <h1>Subject: $!_subject</h1>
 
+## Available variables:
+## $_subject : The current user
+## $_attributesMap  : The AuthenticationAttributes as Map
+## $_attributesJson : The AuthenticationAttributes as Json string
+## $_subjectAttributesJson : The SubjectAttributes as Json string
+## $_contextAttributesJson : The ContextAttributes as Json string
+
     <h4>Subject Attributes</h4>
     <pre>
-        #foreach($key in $_attributes.subject.keySet())
-            $key : $_attributes.subject.get($key)
-        #end
+        $_subjectAttributesJson
     </pre>
     <h4>Context Attributes</h4>
     <pre>
-        #foreach($key in $_attributes.context.keySet())
-            $key : $_attributes.context.get($key)
-        #end
+        $_contextAttributesJson
     </pre>
 
     <button type="submit" class="button button-fullwidth $!button_color mt2">Continue</button>
