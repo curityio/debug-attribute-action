@@ -27,7 +27,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.curityVersion>3.0.0</project.curityVersion>
+        <project.curityVersion>4.5.0</project.curityVersion>
         <libraries.directory>${project.build.directory}/usr/share/plugins/authenticationactions.debugattribute</libraries.directory>
     </properties>
 

@@ -4,7 +4,7 @@ This plugin contains an Authentication Action that can be used during developmen
 
 ## System Requirements
 
-Curity Identity Server 3.0.1 or later and its [system requirements](https://developer.curity.io/docs/latest/system-admin-guide/system-requirements.html).
+Curity Identity Server 4.5.0 or later and its [system requirements](https://developer.curity.io/docs/latest/system-admin-guide/system-requirements.html).
 
 ## Configuration
 
