@@ -27,8 +27,7 @@
 
     <link rel="icon" type="image/png" href="$_staticResourceRootPath/assets/images/favicon-normal.png" sizes="32x32">
     <link rel="apple-touch-icon" href="$_staticResourceRootPath/assets/images/favicon-touch.png">
-    <style>
-    .login-well{max-width:1200px}pre.json-pretty{font-size: .85rem;background:#282a36;color:#f8f8f2;border-radius:4px;position:relative;border:none}.string{color:#f1fa8c}.number{color:#ff79c6}.boolean{color:#00f}.null{color:#ff00ff}.key{color:#8be9fd}.json-pretty-header{background:#282a36;border-top-left-radius:8px;border-top-right-radius:8px;padding:1rem 2rem;position:relative;top:4px}.json-pretty-header span{background-color:#79839e;width:16px;height:16px;border-radius:50%;margin-right:1rem;display:inline-block}
+    <style>pre.json-pretty{font-size: .85rem;background:#282a36;color:#f8f8f2;border-radius:4px;position:relative;border:none}.string{color:#f1fa8c}.number{color:#ff79c6}.boolean{color:#00f}.null{color:#ff00ff}.key{color:#8be9fd}.json-pretty-header{background:#282a36;border-top-left-radius:8px;border-top-right-radius:8px;padding:1rem 2rem;position:relative;top:4px}.json-pretty-header span{background-color:#79839e;width:16px;height:16px;border-radius:50%;margin-right:1rem;display:inline-block}
     </style>
 </head>
 
@@ -99,7 +98,6 @@
             <i class="icon ion-code inlineicon"></i>Subject Attributes
         </h3>
     </div>
-    <header class="json-pretty-header"><span></span> <span></span> <span></span></header>
     <pre class="json-pretty json-pretty-subject"></pre>
 
     <code class="context-json hide">$_contextAttributesJson</code>
@@ -108,7 +106,6 @@
             <i class="icon ion-code inlineicon"></i>Context Attributes
         </h3>
     </div>
-    <header class="json-pretty-header"><span></span> <span></span> <span></span></header>
     <pre class="json-pretty json-pretty-context"></pre>
 
         <button type="submit" class="button button-fullwidth $!button_color mt2">Continue</button>
