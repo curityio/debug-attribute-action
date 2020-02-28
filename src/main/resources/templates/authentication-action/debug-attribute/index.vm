@@ -1,5 +1,5 @@
 #*
- *  Copyright 2018 Curity AB
+ *  Copyright 2020 Curity AB
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -14,36 +14,143 @@
  *  limitations under the License.
  *#
 
-## The title of this page can be overridden by setting the $title variable here to a resource string or the actual value
-##set($title = "")
 
-#set ($show_symbol = false)
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage">
 
-#define ($_body)
+<head>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<form method="post" action="$_actionUrl">
+    #if ($main_css_path)
+    <link rel="stylesheet" type="text/css" href="$main_css_path" />
+    #end
 
-    <h1>Subject: $!_subject</h1>
+    #if ($theme_css_path)
+    <link rel="stylesheet" type="text/css" href="$theme_css_path" />
+    #end
 
-## Available variables:
-## $_subject : The current user
-## $_attributesMap  : The AuthenticationAttributes as Map
-## $_attributesJson : The AuthenticationAttributes as Json string
-## $_subjectAttributesJson : The SubjectAttributes as Json string
-## $_contextAttributesJson : The ContextAttributes as Json string
+    <link rel="icon" type="image/png" href="$_staticResourceRootPath/assets/images/favicon-normal.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="$_staticResourceRootPath/assets/images/favicon-touch.png">
+    <style>.login-well{max-width:800px}pre.json-pretty{font-size: .85rem;background:#282a36;color:#f8f8f2;border-radius:4px;position:relative;border:none}.string{color:#f1fa8c}.number{color:#ff79c6}.boolean{color:#00f}.null{color:#ff00ff}.key{color:#8be9fd}.json-pretty-header{background:#282a36;border-top-left-radius:8px;border-top-right-radius:8px;padding:1rem 2rem;position:relative;top:4px}.json-pretty-header span{background-color:#79839e;width:16px;height:16px;border-radius:50%;margin-right:1rem;display:inline-block}
+    </style>
+</head>
 
-    <h4>Subject Attributes</h4>
-    <pre>
-        $_subjectAttributesJson
-    </pre>
-    <h4>Context Attributes</h4>
-    <pre>
-        $_contextAttributesJson
-    </pre>
+<body class="login $!body_background">
 
-    <button type="submit" class="button button-fullwidth $!button_color mt2">Continue</button>
+<main class="container clearfix" role="main">
 
-</form>
-#end
+    #if ($_errors || $_warnings || $_infoMessages)
+        <div class="login-well $!login_form_background login-well-errors">
+    #else
+        <div class="login-well $!login_form_background">
+    #end
 
-#parse("layouts/default")
+    #if ($body_background == 'body-dark' && $login_form_background == 'form-transparent')
+        <img class="login-logo" src="$!logo_white_path" alt="Logo" title="Logo" role="presentation">
+    #else
+        <img class="login-logo" src="$!logo_path" alt="Logo" title="Logo" role="presentation">
+    #end
+
+    #if ($_errors || $_warnings || $_infoMessages)
+        <div class="alert-wrapper">
+            #if ($_errors)
+
+            <div class="alert alert-danger">
+                #foreach ($error in $_errors)
+                    #message("${_templatePrefix}.$error.message")<br/>
+                #end
+            </div>
+
+            #end
+
+            #if ($_warnings)
+
+            <div class="alert alert-warning">
+                #foreach ($warning in $_warnings)
+                    #message("${_templatePrefix}.$warning.message")<br/>
+                #end
+            </div>
+
+            #end
+
+            #if ($_infoMessages)
+
+            <div class="alert alert-info">
+                #foreach ($msg in $_infoMessages)
+                    #message("${_templatePrefix}.$msg.message")<br/>
+                #end
+            </div>
+
+            #end
+        </div>
+    #end
+
+    <form method="post" action="$_actionUrl">
+
+        <h1 class="center">Subject: <code style="color:#cd3d64;border:1px solid rgba(0,0,0,.05);background-color:#f7fafc;padding:0 3px;margin:0 1px;font-weight:500;">$!_subject</code></h1>
+
+    ## Available variables:
+    ## $_subject : The current user
+    ## $_attributesMap  : The AuthenticationAttributes as Map
+    ## $_attributesJson : The AuthenticationAttributes as Json string
+    ## $_subjectAttributesJson : The SubjectAttributes as Json string
+    ## $_contextAttributesJson : The ContextAttributes as Json string
+
+    <code class="subject-json hide">$_subjectAttributesJson</code>
+    <div class="flex flex-center justify-between mb2">
+        <h3 class="advanced-control advanced-control-issue mt">
+            <i class="icon ion-code inlineicon"></i>Subject Attributes
+        </h3>
+    </div>
+    <pre class="json-pretty json-pretty-subject"></pre>
+
+    <code class="context-json hide">$_contextAttributesJson</code>
+    <div class="flex flex-center justify-between mb2">
+        <h3 class="advanced-control advanced-control-issue mt">
+            <i class="icon ion-code inlineicon"></i>Context Attributes
+        </h3>
+    </div>
+    <pre class="json-pretty json-pretty-context"></pre>
+
+        <button type="submit" class="button button-fullwidth $!button_color mt2">Continue</button>
+
+    </form>
+
+<script>
+
+    if (!library)
+    var library = {};
+
+    library.json = {
+    replacer: function(match, pIndent, pKey, pVal, pEnd) {
+        var key = '<span class=key>';
+        var val = '<span class=number>';
+        var str = '<span class=string>';
+        var r = pIndent || '';
+        if (pKey)
+            r = r + key + pKey.replace(/[": ]/g, '') + '</span>: ';
+        if (pVal)
+            r = r + (pVal[0] == '"' ? str : val) + pVal + '</span>';
+        return r + (pEnd || '');
+        },
+    prettyPrint: function(obj) {
+        var jsonLine = /^( *)("[\w]+": )?("[^"]*"|[\w.+-]*)?([,[{])?$/mg;
+        return JSON.stringify(obj, null, 3)
+            .replace(/&/g, '&amp;').replace(/\\"/g, '&quot;')
+            .replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(jsonLine, library.json.replacer);
+        }
+    };
+
+    var subjectJSON = document.querySelector('.subject-json').innerText
+    var contextJSON = document.querySelector('.context-json').innerText
+
+    document.querySelector('.json-pretty-subject').innerHTML = library.json.prettyPrint(JSON.parse(`[${subjectJSON}]`))
+    document.querySelector('.json-pretty-context').innerHTML = library.json.prettyPrint(JSON.parse(`[${contextJSON}]`))
+
+</script>
+
+
+</body>
+</html>
