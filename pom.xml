@@ -105,4 +105,12 @@
         </snapshotRepository>
     </distributionManagement>
 
+    <repositories>
+      <repository>
+          <id>curity-release-repo</id>
+          <name>Curity Nexus Release Repository</name>
+          <url>https://nexus.curity.se/nexus/content/repositories/customer-release-repo/</url>
+      </repository>
+    </repositories>
+
 </project>
