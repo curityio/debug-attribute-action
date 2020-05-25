@@ -1,7 +1,7 @@
 # Debug Authentication Action
 
-[![Quality](https://curity.io/assets/images/badges/debug-attribute-authentication-action-quality.svg)](https://curity.io/resources/code-examples/status/)
-[![Availability](https://curity.io/assets/images/badges/debug-attribute-authentication-action-availability.svg)](https://curity.io/resources/code-examples/status/)
+[![Quality](https://curity.io/assets/images/badges/debug-attribute-action-quality.svg)](https://curity.io/resources/code-examples/status/)
+[![Availability](https://curity.io/assets/images/badges/debug-attribute-action-availability.svg)](https://curity.io/resources/code-examples/status/)
 
 
 This plugin contains an Authentication Action that can be used during development to view the attributes that are issued when the user logs in.
