@@ -21,13 +21,13 @@
 
     <groupId>io.curity.identityserver.plugin</groupId>
     <artifactId>identityserver.plugins.authenticationactions.debug</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
 
     <name>Debug Authentication Action</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.curityVersion>5.0.0</project.curityVersion>
+        <project.curityVersion>6.0.0-20210120.153703-1</project.curityVersion>
         <libraries.directory>${project.build.directory}/usr/share/plugins/authenticationactions.debugattribute</libraries.directory>
     </properties>
 
@@ -106,11 +106,21 @@
     </distributionManagement>
 
     <repositories>
-      <repository>
-          <id>curity-release-repo</id>
-          <name>Curity Nexus Release Repository</name>
-          <url>https://nexus.curity.se/nexus/content/repositories/customer-release-repo/</url>
-      </repository>
+        <repository>
+            <id>curity-release-repo</id>
+            <name>Curity Nexus Release Repository</name>
+            <url>https://nexus.curity.se/nexus/content/repositories/customer-release-repo/</url>
+        </repository>
+        <repository>
+            <id>customer-snapshot-repo</id>
+            <url>https://nexus.curity.se/nexus/content/repositories/customer-snapshot-repo/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
     </repositories>
 
 </project>
