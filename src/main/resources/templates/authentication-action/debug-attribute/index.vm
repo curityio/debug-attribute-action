@@ -90,6 +90,12 @@
 
         <h1 class="center">Subject: <code style="color:#cd3d64;border:1px solid rgba(0,0,0,.05);background-color:#f7fafc;padding:0 3px;margin:0 1px;font-weight:500;">$!_subject</code></h1>
 
+        <div style="display: flex; justify-content: flex-end">
+            <button id="copy-json-button" class="button button-primary-outline button-tiny">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inlineicon"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Copy JSON</span></button>
+        </div>
+
     ## Available variables:
     ## $_subject : The current user
     ## $_attributesMap  : The AuthenticationAttributes as Map
@@ -116,6 +122,8 @@
         <button type="submit" class="button button-fullwidth $!button_color mt2">Continue</button>
 
     </form>
+
+    <pre id="json" class="hide">$_attributesJson</pre>
 
 <script>
 
@@ -149,6 +157,24 @@
     document.querySelector('.json-pretty-subject').innerHTML = library.json.prettyPrint(JSON.parse(`[${subjectJSON}]`))
     document.querySelector('.json-pretty-context').innerHTML = library.json.prettyPrint(JSON.parse(`[${contextJSON}]`))
 
+    document.addEventListener("DOMContentLoaded", function () {
+        const jsonData = document.getElementById("json");
+        const copyButton = document.getElementById("copy-json-button");
+        const copyButtonText = copyButton.querySelector("span")
+
+        copyButton.addEventListener("click", (event) => {
+            event.preventDefault();
+            navigator.clipboard.writeText(jsonData.innerHTML).then(
+                    () => {
+                        copyButtonText.textContent = "Copied to clipboard";
+                        setTimeout(() => {
+                            copyButtonText.textContent = "Copy JSON";
+                        }, 1000);
+                    },
+                    (error) => console.error(error)
+            );
+        });
+    });
 </script>
 
 
