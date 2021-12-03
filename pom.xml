@@ -28,7 +28,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.curityVersion>6.5.0</project.curityVersion>
-        <libraries.directory>${project.build.directory}/usr/share/plugins/authenticationactions.debugattribute</libraries.directory>
     </properties>
 
     <build>
@@ -53,26 +52,7 @@
                             <Implementation-Vendor>Curity AB</Implementation-Vendor>
                         </manifestEntries>
                     </archive>
-                    <outputDirectory>${libraries.directory}</outputDirectory>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.1.1</version>
-                <executions>
-                    <execution>
-                        <id>copy-dependencies</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${libraries.directory}</outputDirectory>
-                            <excludeScope>provided</excludeScope>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
@@ -92,35 +72,34 @@
         </dependency>
     </dependencies>
 
-    <distributionManagement>
-        <repository>
-            <id>curity-release-repo</id>
-            <name>Curity Nexus Release Repository</name>
-            <url>https://nexus.curity.se/nexus/content/repositories/customer-release-repo/</url>
-        </repository>
-        <snapshotRepository>
-            <id>curity-snapshot-repo</id>
-            <name>Curity Nexus Snapshot Repository</name>
-            <url>https://nexus.curity.se/nexus/content/repositories/customer-snapshot-repo/</url>
-        </snapshotRepository>
-    </distributionManagement>
-
     <repositories>
         <repository>
-            <id>curity-release-repo</id>
-            <name>Curity Nexus Release Repository</name>
-            <url>https://nexus.curity.se/nexus/content/repositories/customer-release-repo/</url>
+            <id>customer-release-repo</id>
+            <url>https://nexus.curityio.net/repository/customer-release-repo/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </repository>
         <repository>
             <id>customer-snapshot-repo</id>
-            <url>https://nexus.curity.se/nexus/content/repositories/customer-snapshot-repo/</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
+            <url>https://nexus.curityio.net/repository/customer-snapshot-repo</url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
         </repository>
     </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>customer-release-repo</id>
+            <name>Curity Nexus Release Repository</name>
+            <url>https://nexus.curityio.net/repository/customer-release-repo/</url>
+        </repository>
+        <snapshotRepository>
+            <id>customer-snapshot-repo</id>
+            <name>Curity Nexus Snapshot Repository</name>
+            <url>https://nexus.curityio.net/repository/customer-snapshot-repo/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>
