@@ -27,7 +27,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.curityVersion>6.5.0</project.curityVersion>
+        <project.curityVersion>7.3.0</project.curityVersion>
     </properties>
 
     <build>
@@ -89,17 +89,17 @@
         </repository>
     </repositories>
 
-    <distributionManagement>
-        <repository>
-            <id>customer-release-repo</id>
-            <name>Curity Nexus Release Repository</name>
-            <url>https://nexus.curityio.net/repository/customer-release-repo/</url>
-        </repository>
-        <snapshotRepository>
-            <id>customer-snapshot-repo</id>
-            <name>Curity Nexus Snapshot Repository</name>
-            <url>https://nexus.curityio.net/repository/customer-snapshot-repo/</url>
-        </snapshotRepository>
-    </distributionManagement>
+<!--    <distributionManagement>-->
+<!--        <repository>-->
+<!--            <id>customer-release-repo</id>-->
+<!--            <name>Curity Nexus Release Repository</name>-->
+<!--            <url>https://nexus.curityio.net/repository/customer-release-repo/</url>-->
+<!--        </repository>-->
+<!--        <snapshotRepository>-->
+<!--            <id>customer-snapshot-repo</id>-->
+<!--            <name>Curity Nexus Snapshot Repository</name>-->
+<!--            <url>https://nexus.curityio.net/repository/customer-snapshot-repo/</url>-->
+<!--        </snapshotRepository>-->
+<!--    </distributionManagement>-->
 
 </project>

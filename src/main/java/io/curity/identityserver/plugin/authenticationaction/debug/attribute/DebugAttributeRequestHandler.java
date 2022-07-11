@@ -17,6 +17,9 @@
 package io.curity.identityserver.plugin.authenticationaction.debug.attribute;
 
 import se.curity.identityserver.sdk.attribute.Attribute;
+import se.curity.identityserver.sdk.attribute.AttributeValue;
+import se.curity.identityserver.sdk.attribute.Attributes;
+import se.curity.identityserver.sdk.attribute.AuthenticationActionAttributes;
 import se.curity.identityserver.sdk.authenticationaction.completions.ActionCompletionRequestHandler;
 import se.curity.identityserver.sdk.authenticationaction.completions.ActionCompletionResult;
 import se.curity.identityserver.sdk.authenticationaction.completions.IntermediateAuthenticationState;
@@ -61,7 +64,9 @@ public class DebugAttributeRequestHandler implements ActionCompletionRequestHand
         response.putViewData("_attributesMap", authenticationAttributes, Response.ResponseModelScope.ANY);
 
         response.putViewData("_attributesJson",
-                _json.fromAttributes(_intermediateAuthenticationState.getAuthenticationAttributes()),
+                _json.fromAttributes(_intermediateAuthenticationState.getAuthenticationAttributes()
+                        .append(Attribute.of("action",
+                                AttributeValue.of(_intermediateAuthenticationState.getAuthenticationActionAttributes())))),
                 Response.ResponseModelScope.ANY);
 
         response.putViewData("_subjectAttributesJson",
@@ -72,6 +77,10 @@ public class DebugAttributeRequestHandler implements ActionCompletionRequestHand
         response.putViewData("_contextAttributesJson",
                 _json.toJson(_intermediateAuthenticationState.getAuthenticationAttributes()
                         .asMap().getOrDefault("context", emptyMap())),
+                Response.ResponseModelScope.ANY);
+
+        response.putViewData("_actionAttributesJson",
+                _json.toJson(_intermediateAuthenticationState.getAuthenticationActionAttributes().asMap()),
                 Response.ResponseModelScope.ANY);
 
         return Optional.empty();
