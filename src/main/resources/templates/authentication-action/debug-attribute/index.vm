@@ -102,6 +102,7 @@
     ## $_attributesJson : The AuthenticationAttributes as Json string
     ## $_subjectAttributesJson : The SubjectAttributes as Json string
     ## $_contextAttributesJson : The ContextAttributes as Json string
+    ## $_actionAttributesJson : The ActionAttributes as Json string
 
     <code class="subject-json hide">$_subjectAttributesJson</code>
     <div class="flex flex-center justify-between mb2">
@@ -118,6 +119,14 @@
         </h3>
     </div>
     <pre class="json-pretty json-pretty-context"></pre>
+
+    <code class="action-json hide">$_actionAttributesJson</code>
+    <div class="flex flex-center justify-between mb2">
+        <h3 class="advanced-control advanced-control-issue mt">
+            <i class="icon ion-code inlineicon"></i>Action Attributes
+        </h3>
+    </div>
+    <pre class="json-pretty json-pretty-action"></pre>
 
         <button type="submit" class="button button-fullwidth $!button_color mt2">Continue</button>
 
@@ -153,9 +162,11 @@
 
     var subjectJSON = document.querySelector('.subject-json').innerText
     var contextJSON = document.querySelector('.context-json').innerText
+    var actionJSON = document.querySelector('.action-json').innerText
 
     document.querySelector('.json-pretty-subject').innerHTML = library.json.prettyPrint(JSON.parse(`[${subjectJSON}]`))
     document.querySelector('.json-pretty-context').innerHTML = library.json.prettyPrint(JSON.parse(`[${contextJSON}]`))
+    document.querySelector('.json-pretty-action').innerHTML = library.json.prettyPrint(JSON.parse(`[${actionJSON}]`))
 
     document.addEventListener("DOMContentLoaded", function () {
         const jsonData = document.getElementById("json");

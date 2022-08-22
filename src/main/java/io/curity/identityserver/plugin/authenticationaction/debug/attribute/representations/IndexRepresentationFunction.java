@@ -15,6 +15,7 @@ public final class IndexRepresentationFunction implements RepresentationFunction
     private static final Message MSG_CONTINUE = Message.ofLiteral("Continue");
     private static final Message MSG_SUBJECT_ATTRS = Message.ofLiteral("Subject Attributes");
     private static final Message MSG_CONTEXT_ATTRS = Message.ofLiteral("Context Attributes");
+    private static final Message MSG_ACTION_ATTRS = Message.ofLiteral("Action Attributes");
 
     @Override
     public Representation apply(RepresentationModel model, RepresentationFactory factory)
@@ -27,6 +28,9 @@ public final class IndexRepresentationFunction implements RepresentationFunction
 
             step.addMessage(MSG_CONTEXT_ATTRS, HaapiContract.MessageClasses.INFO);
             step.addMessage(Message.ofLiteral(model.getString("_contextAttributesJson")), HaapiContract.MessageClasses.INFO, "json");
+
+            step.addMessage(MSG_ACTION_ATTRS, HaapiContract.MessageClasses.INFO);
+            step.addMessage(Message.ofLiteral(model.getString("_actionAttributesJson")), HaapiContract.MessageClasses.INFO, "json");
 
             step.addFormAction(HaapiContract.Actions.Kinds.CONTINUE,
                     URI.create(model.getString("_actionUrl")), HttpMethod.POST, null,
