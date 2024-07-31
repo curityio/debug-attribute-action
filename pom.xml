@@ -21,7 +21,7 @@
 
     <groupId>io.curity.identityserver.plugin</groupId>
     <artifactId>identityserver.plugins.authenticationactions.debug</artifactId>
-    <version>1.4.0</version>
+    <version>1.4.2</version>
 
     <name>Debug Authentication Action</name>
 
