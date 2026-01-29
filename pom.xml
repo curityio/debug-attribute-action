@@ -21,13 +21,13 @@
 
     <groupId>io.curity.identityserver.plugin</groupId>
     <artifactId>identityserver.plugins.authenticationactions.debug</artifactId>
-    <version>1.4.2</version>
+    <version>1.4.3</version>
 
     <name>Debug Authentication Action</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.curityVersion>7.3.0</project.curityVersion>
+        <project.curityVersion>10.7.1</project.curityVersion>
     </properties>
 
     <build>
@@ -37,8 +37,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>21</source>
+                    <target>21</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -67,39 +67,17 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.22</version>
+            <version>2.0.12</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>customer-release-repo</id>
-            <url>https://nexus.curityio.net/repository/customer-release-repo/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>customer-snapshot-repo</id>
-            <url>https://nexus.curityio.net/repository/customer-snapshot-repo</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 
     <distributionManagement>
         <repository>
             <id>customer-release-repo</id>
             <name>Curity Nexus Release Repository</name>
-            <url>https://nexus.curityio.net/repository/customer-release-repo/</url>
+            <url>https://hub.curityio.net/repository/customer-release-repo/</url>
         </repository>
-        <snapshotRepository>
-            <id>customer-snapshot-repo</id>
-            <name>Curity Nexus Snapshot Repository</name>
-            <url>https://nexus.curityio.net/repository/customer-snapshot-repo/</url>
-        </snapshotRepository>
     </distributionManagement>
 
 </project>
