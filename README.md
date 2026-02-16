@@ -1,7 +1,7 @@
 # Debug Authentication Action
 
 [![Quality](https://img.shields.io/badge/quality-production-green)](https://curity.io/resources/code-examples/status/)
-[![Availability](https://img.shields.io/badge/availability-binary-blue)](https://curity.io/resources/code-examples/status/)
+[![Availability](https://img.shields.io/badge/availability-bundled-green)](https://curity.io/resources/code-examples/status/)
 
 
 This plugin contains an Authentication Action that can be used during development to view the attributes that are issued when the user logs in.
