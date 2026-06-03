@@ -128,7 +128,7 @@
     </div>
     <pre class="json-pretty json-pretty-action"></pre>
 
-        <button type="submit" class="button button-fullwidth $!button_color mt2">Continue</button>
+    <button type="submit" class="button button-fullwidth button-primary mt2">Continue</button>
 
     </form>
 
@@ -161,9 +161,9 @@
         }
     };
 
-    var subjectJSON = document.querySelector('.subject-json').innerText
-    var contextJSON = document.querySelector('.context-json').innerText
-    var actionJSON = document.querySelector('.action-json').innerText
+    var subjectJSON = document.querySelector('.subject-json').textContent
+    var contextJSON = document.querySelector('.context-json').textContent
+    var actionJSON = document.querySelector('.action-json').textContent
 
     document.querySelector('.json-pretty-subject').innerHTML = library.json.prettyPrint(JSON.parse(`[${subjectJSON}]`))
     document.querySelector('.json-pretty-context').innerHTML = library.json.prettyPrint(JSON.parse(`[${contextJSON}]`))
